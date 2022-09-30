@@ -1,0 +1,51 @@
+﻿@using AirQualityApp.Shared.Data
+@inject AQIDataService AQIService
+
+
+<FluentTextField TextFieldType="TextFieldType.Text" @bind-Value="newLocation">Location</FluentTextField>
+<br />
+<FluentButton Appearance="@Appearance.Accent" Disabled="@isLoading" @onclick="AddLocation" >Add Location</FluentButton>
+<FluentButton Appearance="@Appearance.Accent" Disabled="@isLoading" @onclick="Refresh">Refresh Data</FluentButton>
+
+@if (isLoading)
+{
+    <p><em>Loading AQI..</em></p>
+    <center><FluentProgressRing /></center>
+    
+}
+else
+{
+    <FluentDataGrid RowsData=AQIService.Data ColumnDefinitions=ColumnsGrid1 GridTemplateColumns="1fr 1fr" />
+}
+
+@code {
+    private string? newLocation;
+    private bool isLoading;
+    public List<ColumnDefinition<AQIData>> ColumnsGrid1 = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        ColumnsGrid1.Add(new ColumnDefinition<AQIData>("Location", x => x.Location));
+        ColumnsGrid1.Add(new ColumnDefinition<AQIData>("AQI", x => x.AQI));
+        ColumnsGrid1.Add(new ColumnDefinition<AQIData>("Level of Concern", x => x.Level));
+        await Refresh();
+    }
+
+    void AddLocation()
+    {
+        if (string.IsNullOrWhiteSpace(newLocation))
+            return;
+
+        AQIService.Data.Add(new AQIData { Location = newLocation });
+        newLocation = string.Empty;
+    }
+
+    async Task Refresh()
+    {
+        isLoading = true;
+        await AQIService.GetAQIAsync();
+        isLoading = false;
+    }
+
+    
+}

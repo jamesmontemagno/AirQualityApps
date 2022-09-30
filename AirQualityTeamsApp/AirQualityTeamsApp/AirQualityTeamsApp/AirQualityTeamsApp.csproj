@@ -23,4 +23,9 @@
     <PackageReference Include="Microsoft.TeamsFx" Version="1.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\AirQualityApp.Shared\AirQualityApp.Shared\AirQualityApp.Shared.csproj" />
+    <ProjectReference Include="..\..\..\AirQualityWeb.SharedComponents\AirQualityWeb.SharedComponents.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-namespace AirQualityWeb.Data;
+namespace AirQualityApp.Shared.Data;
 
 public class AQIData
 {

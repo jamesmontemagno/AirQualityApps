@@ -1,3 +1,4 @@
+using AirQualityApp.Shared.Data;
 using AirQualityTeamsApp.Interop.TeamsSDK;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ builder.Services.AddServerSideBlazor();
 
 builder.Services.AddTeamsFx(builder.Configuration.GetSection("TeamsFx"));
 builder.Services.AddScoped<MicrosoftTeams>();
+builder.Services.AddSingleton<AQIDataService>();
 
 builder.Services.AddControllers();
 builder.Services.AddHttpClient("WebClient", client => client.Timeout = TimeSpan.FromSeconds(600));
