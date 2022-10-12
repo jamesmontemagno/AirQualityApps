@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityApp.Shared", "..\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityWeb.SharedComponents", "..\..\AirQualityWeb.SharedComponents\AirQualityWeb.SharedComponents.csproj", "{3163CBE6-A864-497B-AADB-08B254F332DC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{2C591085-E67B-47FF-8715-018A26565D0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{76337EDB-791F-4A83-9F42-10B4555FFC78} = {2C591085-E67B-47FF-8715-018A26565D0F}
+		{3163CBE6-A864-497B-AADB-08B254F332DC} = {2C591085-E67B-47FF-8715-018A26565D0F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0140F872-3702-4AD0-83A5-F275EB9DA18B}

@@ -19,7 +19,7 @@ namespace AirQualityCommandBot.Commands
         public IEnumerable<ITriggerPattern> TriggerPatterns => new List<ITriggerPattern>
         {
             // Used to trigger the command handler if the command text contains 'helloWorld'
-            new RegExpTrigger("helloWorld")
+            new RegExpTrigger("aqi")
         };
 
         public HelloWorldCommandHandler(ILogger<HelloWorldCommandHandler> logger)
@@ -31,6 +31,12 @@ namespace AirQualityCommandBot.Commands
         {
             _logger?.LogInformation($"Bot received message: {message.Text}");
 
+            var location = message.Text.Replace("aqi", "").Trim();
+
+            var httpClient = new HttpClient();
+            var url = $"https://airqualityfunctions20220929140700.azurewebsites.net/api/GetAirQuality?location={location}";
+            var aqi = await httpClient.GetStringAsync(url);
+
             // Read adaptive card template
             var cardTemplate = await File.ReadAllTextAsync(_adaptiveCardFilePath, cancellationToken);
 
@@ -39,8 +45,7 @@ namespace AirQualityCommandBot.Commands
             (
                 new HelloWorldModel
                 {
-                    Title = "Your Hello World Bot is Running",
-                    Body = "Congratulations! Your hello world bot is running. Click the documentation below to learn more about Bots and the Teams Toolkit.",
+                    Title = aqi,
                 }
             );
 
