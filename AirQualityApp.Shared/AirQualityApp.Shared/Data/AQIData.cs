@@ -24,6 +24,9 @@ public class AQIData
                     return "Unhealthy for Sensitive Groups";
                 if (level >= 51)
                     return "Moderate";
+                if (level < 0)
+                    return "Unknown";
+
                 return "Good";
             }
 
