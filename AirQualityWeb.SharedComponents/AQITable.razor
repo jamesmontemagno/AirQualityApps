@@ -3,8 +3,8 @@
 
 
 <input placeholder="Location" @bind="newLocation" />
-<button @onclick="AddLocation">Add Location</button>
-<button @onclick="Refresh">Refresh Data</button>
+<button class="btn btn-primary" @onclick="AddLocation">Add Location</button>
+<button class="btn btn-secondary" @onclick="Refresh">Refresh Data</button>
 
 @if (isLoading)
 {

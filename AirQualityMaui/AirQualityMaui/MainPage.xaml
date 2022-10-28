@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:AirQualityMaui.ViewModels"
+             x:DataType="vm:AirQualityViewModel"
+             x:Class="AirQualityMaui.MainPage">
+
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Entry Text="{Binding Location}"
+                   Placeholder="Location"
+                   BackgroundColor="Gray"/>
+
+            <Label
+                Text="{Binding Current}"
+                SemanticProperties.HeadingLevel="Level1"
+                FontSize="80"
+                HorizontalOptions="Center" />
+
+            <ActivityIndicator IsVisible="{Binding IsBusy}"
+                               IsRunning="{Binding IsBusy}"/>
+
+            <Button
+                x:Name="CounterBtn"
+                IsEnabled="{Binding IsNotBusy}"
+                Text="Get AQI"
+                SemanticProperties.Hint="Counts the number of times you click"
+                Command="{Binding GetAQICommand}"
+                HorizontalOptions="Center" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

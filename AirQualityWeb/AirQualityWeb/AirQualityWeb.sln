@@ -13,6 +13,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{523C8F
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityFunctions", "..\..\AirQualityFunctions\AirQualityFunctions\AirQualityFunctions.csproj", "{22FBB22E-92D7-4EA4-86AC-46594FA3917E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hybrid", "Hybrid", "{3DD7EADE-EA66-475E-855B-60041FBB3A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirQualityHybrid", "AirQualityHybrid\AirQualityHybrid.csproj", "{481E0B20-6691-402A-8105-6C64AD36FA83}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +39,12 @@ Global
 		{22FBB22E-92D7-4EA4-86AC-46594FA3917E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22FBB22E-92D7-4EA4-86AC-46594FA3917E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22FBB22E-92D7-4EA4-86AC-46594FA3917E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +52,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{0D95DA06-FD1E-4B22-9201-F3253F3148B5} = {523C8F98-12F8-4694-8E4A-55E9C5AD17CE}
 		{3E8A5808-396C-4901-BF28-2BDA50E549F0} = {523C8F98-12F8-4694-8E4A-55E9C5AD17CE}
+		{481E0B20-6691-402A-8105-6C64AD36FA83} = {3DD7EADE-EA66-475E-855B-60041FBB3A74}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F5C72BED-21A9-43B2-A9D1-259B832F5B4C}
