@@ -1,12 +1,14 @@
-﻿namespace AirQualityHybrid
-{
-    public partial class App : Application
-    {
-        public App()
-        {
-            InitializeComponent();
+﻿using AirQualityHybrid.Pages;
 
-            MainPage = new MainPage();
-        }
+namespace AirQualityHybrid;
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        MainPage = new MainPage();
+        //MainPage = new AppShell();
     }
 }
