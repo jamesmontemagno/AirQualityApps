@@ -24,6 +24,17 @@ public static class MauiProgram
         builder.Services.AddSingleton<WeatherForecastService>();
         builder.Services.AddSingleton<AQIDataService>();
 
+        // Pick one of these network connectivity options:
+
+        // 1. Use the device's current connectivity
+        builder.Services.AddSingleton<IConnectivity>(Microsoft.Maui.Networking.Connectivity.Current);
+        builder.Services.AddSingleton<IAQConnectivity, MauiEssentialsConnectivity>();
+
+        // 2. Assume connectivity is always available
+        //builder.Services.AddSingleton<IAQConnectivity, AlwaysConnectedConnectivity>();
+
+        // 3. Randomly change between connected and disconnected
+        //builder.Services.AddSingleton<IAQConnectivity, RandomConnectedConnectivity>();
 
         return builder.Build();
     }
