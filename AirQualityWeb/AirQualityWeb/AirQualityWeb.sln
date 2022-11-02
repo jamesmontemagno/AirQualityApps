@@ -15,7 +15,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityFunctions", "..\.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hybrid", "Hybrid", "{3DD7EADE-EA66-475E-855B-60041FBB3A74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirQualityHybrid", "AirQualityHybrid\AirQualityHybrid.csproj", "{481E0B20-6691-402A-8105-6C64AD36FA83}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirQualityHybrid", "AirQualityHybrid\AirQualityHybrid.csproj", "{481E0B20-6691-402A-8105-6C64AD36FA83}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirQualityWasm", "AirQualityWasm\AirQualityWasm.csproj", "{039BFC41-4BF9-4488-A00A-AD5E91BBCB8A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.Build.0 = Release|Any CPU
 		{481E0B20-6691-402A-8105-6C64AD36FA83}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{039BFC41-4BF9-4488-A00A-AD5E91BBCB8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{039BFC41-4BF9-4488-A00A-AD5E91BBCB8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{039BFC41-4BF9-4488-A00A-AD5E91BBCB8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{039BFC41-4BF9-4488-A00A-AD5E91BBCB8A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

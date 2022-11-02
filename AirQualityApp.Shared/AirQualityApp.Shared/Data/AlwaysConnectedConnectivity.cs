@@ -5,7 +5,7 @@
 /// </summary>
 public class AlwaysConnectedConnectivity : IAQConnectivity
 {
-    public bool IsConnected => true;
+    public Task<bool> GetIsConnectedAsync() => Task.FromResult(true);
 
     public event EventHandler? ConnectivityChanged;
 }

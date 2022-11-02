@@ -17,7 +17,8 @@ public class MauiEssentialsConnectivity : IAQConnectivity
             ConnectivityChanged?.Invoke(this, EventArgs.Empty);
         };
     }
-    public bool IsConnected => _mauiConnectivity.NetworkAccess == NetworkAccess.Internet;
+
+    public Task<bool> GetIsConnectedAsync() => Task.FromResult(_mauiConnectivity.NetworkAccess == NetworkAccess.Internet);
 
     public event EventHandler ConnectivityChanged;
 }
