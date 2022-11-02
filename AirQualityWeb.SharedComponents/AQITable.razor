@@ -2,12 +2,12 @@
 @inject AQIDataService AQIService
 @inject IAQConnectivity AQConnectivity
 
-<input placeholder="Location" @bind="newLocation" disabled="@(!enableTableEditing)" />
-<button class="btn btn-primary" @onclick="AddLocation" disabled="@(!enableTableEditing)">Add Location</button>
-<button class="btn btn-secondary" @onclick="Refresh" disabled="@(!enableTableEditing)">Refresh Data</button>
+<input placeholder="Location" @bind="newLocation" disabled="@(!isConnected)" />
+<button class="btn btn-primary" @onclick="AddLocation" disabled="@(!isConnected)">Add Location</button>
+<button class="btn btn-secondary" @onclick="Refresh" disabled="@(!isConnected)">Refresh Data</button>
 
 <div style="margin: 1em;">
-    @if (!AQConnectivity.IsConnected)
+    @if (!isConnected)
     {
         <p><i class="oi oi-warning" style="color: red;"></i> Not connected. Please check network connectivity.</p>
     }
@@ -46,16 +46,16 @@
 @code {
     private string? newLocation;
     private bool isLoading;
-    private bool enableTableEditing;
+    private bool isConnected;
 
     protected override async Task OnInitializedAsync()
     {
         AQConnectivity.ConnectivityChanged += async (_, __) =>
         {
-            enableTableEditing = AQConnectivity.IsConnected;
+            isConnected = await AQConnectivity.GetIsConnectedAsync();
             await InvokeAsync(() => StateHasChanged());
         };
-        enableTableEditing = AQConnectivity.IsConnected;
+        isConnected = await AQConnectivity.GetIsConnectedAsync();
         await Refresh();
     }
 
@@ -70,8 +70,11 @@
 
     async Task Refresh()
     {
-        isLoading = true;
-        await AQIService.GetAQIAsync();
-        isLoading = false;
+        if (isConnected)
+        {
+            isLoading = true;
+            await AQIService.GetAQIAsync();
+            isLoading = false;
+        }
     }
 }

@@ -6,6 +6,6 @@
 /// </summary>
 public interface IAQConnectivity
 {
-    bool IsConnected { get; }
+    Task<bool> GetIsConnectedAsync();
     event EventHandler? ConnectivityChanged;
 }

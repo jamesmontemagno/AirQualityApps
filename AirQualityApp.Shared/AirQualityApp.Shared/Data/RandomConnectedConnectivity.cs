@@ -21,7 +21,7 @@ public class RandomConnectedConnectivity : IAQConnectivity, IDisposable
             period: 5_000);
     }
 
-    public bool IsConnected => _isConnected;
+    public Task<bool> GetIsConnectedAsync() => Task.FromResult(_isConnected);
 
     public event EventHandler? ConnectivityChanged;
 
