@@ -1,44 +1,61 @@
 ﻿@using AirQualityApp.Shared.Data
 @inject AQIDataService AQIService
+@inject IAQConnectivity AQConnectivity
 
+<input placeholder="Location" @bind="newLocation" disabled="@(!enableTableEditing)" />
+<button class="btn btn-primary" @onclick="AddLocation" disabled="@(!enableTableEditing)">Add Location</button>
+<button class="btn btn-secondary" @onclick="Refresh" disabled="@(!enableTableEditing)">Refresh Data</button>
 
-<input placeholder="Location" @bind="newLocation" />
-<button class="btn btn-primary" @onclick="AddLocation">Add Location</button>
-<button class="btn btn-secondary" @onclick="Refresh">Refresh Data</button>
-
-@if (isLoading)
-{
-    <p><em>Loading AQI..</em></p>
-}
-else
-{
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Location</th>
-                <th>AQI</th>
-                <th>Level of Concern</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in AQIService.Data)
-            {
+<div style="margin: 1em;">
+    @if (!AQConnectivity.IsConnected)
+    {
+        <p><i class="oi oi-warning" style="color: red;"></i> Not connected. Please check network connectivity.</p>
+    }
+    else if (isLoading)
+    {
+        <p><i class="oi oi-clock"></i> <em>Loading AQI..</em></p>
+    }
+    else if (!AQIService.Data.Any())
+    {
+        <p><i class="oi oi-map-marker"></i> <em>No locations entered</em></p>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
                 <tr>
-                    <td>@item.Location</td>
-                    <td>@item.AQI</td>
-                    <td>@item.Level</td>
+                    <th>Location</th>
+                    <th>AQI</th>
+                    <th>Level of Concern</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
+            </thead>
+            <tbody>
+                @foreach (var item in AQIService.Data)
+                {
+                    <tr>
+                        <td>@item.Location</td>
+                        <td>@item.AQI</td>
+                        <td>@item.Level</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
 
 @code {
     private string? newLocation;
     private bool isLoading;
+    private bool enableTableEditing;
 
     protected override async Task OnInitializedAsync()
     {
+        AQConnectivity.ConnectivityChanged += async (_, __) =>
+        {
+            enableTableEditing = AQConnectivity.IsConnected;
+            await InvokeAsync(() => StateHasChanged());
+        };
+        enableTableEditing = AQConnectivity.IsConnected;
         await Refresh();
     }
 
