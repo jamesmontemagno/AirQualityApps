@@ -1,8 +1,17 @@
 ﻿@page "/"
+@inject NavigationManager NavManager
 
 <PageTitle>Air Quality</PageTitle>
 
 <h1>Air Quality</h1>
 
+<AirQualityWeb.SharedComponents.AQITable NavigateLocationDetails="NavigateToLocationAsync" />
 
-<AirQualityWeb.SharedComponents.AQITable/>
+@code
+{
+    Task NavigateToLocationAsync(string location)
+    {
+        NavManager.NavigateTo($"location/{location}");
+        return Task.CompletedTask;
+    }
+}

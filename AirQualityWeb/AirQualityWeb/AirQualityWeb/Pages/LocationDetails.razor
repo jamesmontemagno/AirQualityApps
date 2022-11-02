@@ -1,0 +1,19 @@
+﻿@page "/location/{location}"
+
+<PageTitle>Air Quality in: @Location</PageTitle>
+
+<h1>Air Quality - @Location</h1>
+
+Did you know?
+
+<ul>
+    <li>The location of @Location was founded in the year @(Random.Shared.Next(DateTimeOffset.Now.Year))?</li>
+    <li>The population of @Location is @(Random.Shared.Next(100_000, 10_000_000).ToString("N0"))?</li>
+    <li>The weather in @Location is full of air, with a @(Random.Shared.Next(100))% chance of moisture?</li>
+</ul>
+
+@code
+{
+    [Parameter]
+    public string Location { get; set; }
+}
