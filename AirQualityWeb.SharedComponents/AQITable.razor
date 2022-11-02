@@ -33,7 +33,16 @@
                 @foreach (var item in AQIService.Data)
                 {
                     <tr>
-                        <td>@item.Location</td>
+                        <td>
+                            @if (NavigateLocationDetails.HasDelegate)
+                            {
+                                <button class="btn btn-link" type="button" @onclick="async () => await NavigateLocationDetailsAsync(item.Location!)">@item.Location</button>
+                            }
+                            else
+                            {
+                                @item.Location
+                            }
+                        </td>
                         <td>@item.AQI</td>
                         <td>@item.Level</td>
                     </tr>
@@ -47,6 +56,9 @@
     private string? newLocation;
     private bool isLoading;
     private bool isConnected;
+
+    [Parameter]
+    public EventCallback<string> NavigateLocationDetails { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,5 +88,10 @@
             await AQIService.GetAQIAsync();
             isLoading = false;
         }
+    }
+
+    async Task NavigateLocationDetailsAsync(string location)
+    {
+        await NavigateLocationDetails.InvokeAsync(location);
     }
 }
