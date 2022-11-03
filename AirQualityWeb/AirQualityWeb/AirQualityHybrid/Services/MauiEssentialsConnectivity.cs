@@ -1,6 +1,7 @@
-﻿using AirQualityApp.Shared.Data;
+﻿using AirQualityApp.Shared.Contracts;
+using AirQualityApp.Shared.Data;
 
-namespace AirQualityHybrid;
+namespace AirQualityHybrid.Services;
 
 /// <summary>
 /// Implements the <see cref="IAQConnectivity"/> interface to report the device's network state.

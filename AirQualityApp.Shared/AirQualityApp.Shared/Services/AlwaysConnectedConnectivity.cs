@@ -1,4 +1,6 @@
-﻿namespace AirQualityApp.Shared.Data;
+﻿using AirQualityApp.Shared.Contracts;
+
+namespace AirQualityApp.Shared.Services;
 
 /// <summary>
 /// Implements the <see cref="IAQConnectivity"/> interface to report an always connected state.

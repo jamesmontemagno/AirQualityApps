@@ -1,6 +1,7 @@
+using AirQualityApp.Shared.Contracts;
 using AirQualityApp.Shared.Data;
-using AirQualityHybrid;
 using AirQualityWasm;
+using AirQualityWasm.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 

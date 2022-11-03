@@ -1,4 +1,4 @@
-﻿namespace AirQualityApp.Shared.Data;
+﻿namespace AirQualityApp.Shared.Contracts;
 
 /// <summary>
 /// Defines an interface for components to check current network conditions

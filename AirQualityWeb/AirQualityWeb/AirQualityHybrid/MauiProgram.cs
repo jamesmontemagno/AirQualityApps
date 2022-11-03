@@ -1,5 +1,7 @@
-﻿using AirQualityApp.Shared.Data;
+﻿using AirQualityApp.Shared.Contracts;
+using AirQualityApp.Shared.Data;
 using AirQualityHybrid.Data;
+using AirQualityHybrid.Services;
 using Microsoft.AspNetCore.Components.WebView.Maui;
 
 namespace AirQualityHybrid;
@@ -27,7 +29,7 @@ public static class MauiProgram
         // Pick one of these network connectivity options:
 
         // 1. Use the device's current connectivity
-        builder.Services.AddSingleton<IConnectivity>(Microsoft.Maui.Networking.Connectivity.Current);
+        builder.Services.AddSingleton<IConnectivity>(c => Connectivity.Current);
         builder.Services.AddSingleton<IAQConnectivity, MauiEssentialsConnectivity>();
 
         // 2. Assume connectivity is always available

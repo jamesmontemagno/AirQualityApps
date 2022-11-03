@@ -1,8 +1,18 @@
 ﻿@page "/"
+@inject NavigationManager NavManager
 
-<h1>Hello, world!</h1>
-
-Welcome to your new app.
+<AirQualityWeb.SharedComponents.AQITable NavigateLocationDetails="NavigateToLocationAsync" />
 
 
-<AirQualityWeb.SharedComponents.AQITable/>
+@code
+{
+    Task NavigateToLocationAsync(string location)
+    {
+        return Shell.Current.GoToAsync($"{nameof(DetailsPage)}?Location={location}");
+    }
+    /*Task NavigateToLocationAsync(string location)
+    {
+        NavManager.NavigateTo($"location/{location}");
+        return Task.CompletedTask;
+    }*/
+}

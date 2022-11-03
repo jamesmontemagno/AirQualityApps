@@ -1,7 +1,8 @@
-﻿using AirQualityApp.Shared.Data;
+﻿using AirQualityApp.Shared.Contracts;
+using AirQualityApp.Shared.Data;
 using Microsoft.JSInterop;
 
-namespace AirQualityHybrid;
+namespace AirQualityWasm.Services;
 
 /// <summary>
 /// Implements the <see cref="IAQConnectivity"/> interface to report the browser's network state.
