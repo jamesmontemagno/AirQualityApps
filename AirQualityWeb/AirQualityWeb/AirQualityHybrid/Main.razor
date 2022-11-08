@@ -1,4 +1,4 @@
-﻿<Router AppAssembly="@typeof(Main).Assembly">
+﻿<Router AppAssembly="@typeof(Main).Assembly" AdditionalAssemblies="new[] { typeof(AirQualityWeb.SharedComponents.LocationDetails).Assembly }">
 	<Found Context="routeData">
 		<RouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />

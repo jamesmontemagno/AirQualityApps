@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AirQualityHybrid.Pages.DetailsPage"
              xmlns:components="clr-namespace:AirQualityWeb.SharedComponents;assembly=AirQualityWeb.SharedComponents"
-             Title="DetailsPage">
+             Title="Air Quality Details"
+             Padding="10">
     <BlazorWebView HostPage="wwwroot/index.html">
         <BlazorWebView.RootComponents>
             <RootComponent x:Name="MyComponent" Selector="#app" ComponentType="{x:Type components:LocationDetails}" />

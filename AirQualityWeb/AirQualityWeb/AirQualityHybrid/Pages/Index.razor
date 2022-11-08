@@ -6,13 +6,14 @@
 
 @code
 {
+    //Task NavigateToLocationAsync(string location)
+    //{
+    //    return Shell.Current.GoToAsync($"{nameof(DetailsPage)}?Location={location}");
+    //}
+
     Task NavigateToLocationAsync(string location)
-    {
-        return Shell.Current.GoToAsync($"{nameof(DetailsPage)}?Location={location}");
-    }
-    /*Task NavigateToLocationAsync(string location)
     {
         NavManager.NavigateTo($"location/{location}");
         return Task.CompletedTask;
-    }*/
+    }
 }
