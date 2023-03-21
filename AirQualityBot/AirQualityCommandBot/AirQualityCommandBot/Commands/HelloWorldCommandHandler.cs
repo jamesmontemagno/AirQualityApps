@@ -20,9 +20,9 @@ namespace AirQualityCommandBot.Commands
         public IEnumerable<ITriggerPattern> TriggerPatterns => new List<ITriggerPattern>
         {
             // Used to trigger the command handler if the command text contains 'helloWorld'
-            new RegExpTrigger("helloWorld")
+            new RegExpTrigger("aqi")
         };
-        AQIDataService _service
+        AQIDataService _service;
         public HelloWorldCommandHandler(ILogger<HelloWorldCommandHandler> logger, AQIDataService service)
         {
             _logger = logger;
@@ -33,6 +33,10 @@ namespace AirQualityCommandBot.Commands
         {
             _logger?.LogInformation($"App received message: {message.Text}");
 
+            var location = message.Text.Replace("aqi", string.Empty).Trim();
+
+            var aqi = await _service.GetAQIAsync(location);
+
             // Read adaptive card template
             var cardTemplate = await File.ReadAllTextAsync(_adaptiveCardFilePath, cancellationToken);
 
@@ -41,8 +45,7 @@ namespace AirQualityCommandBot.Commands
             (
                 new HelloWorldModel
                 {
-                    Title = "Your Hello World App is Running",
-                    Body = "Congratulations! Your Hello World App is running. Open the documentation below to learn more about how to build applications with the Teams Toolkit.",
+                    Title = $"For {location} the AQI is {aqi}"
                 }
             );
 
