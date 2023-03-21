@@ -4,11 +4,12 @@ using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 using Microsoft.TeamsFx.Conversation;
 using Newtonsoft.Json;
+using AirQualityApp.Shared.Data;
 
 namespace AirQualityCommandBot.Commands
 {
     /// <summary>
-    /// The <see cref="HelloWorldCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and 
+    /// The <see cref="HelloWorldCommandHandler"/> registers a pattern with the <see cref="ITeamsCommandHandler"/> and
     /// responds with an Adaptive Card if the user types the <see cref="TriggerPatterns"/>.
     /// </summary>
     public class HelloWorldCommandHandler : ITeamsCommandHandler
@@ -19,23 +20,18 @@ namespace AirQualityCommandBot.Commands
         public IEnumerable<ITriggerPattern> TriggerPatterns => new List<ITriggerPattern>
         {
             // Used to trigger the command handler if the command text contains 'helloWorld'
-            new RegExpTrigger("aqi")
+            new RegExpTrigger("helloWorld")
         };
-
-        public HelloWorldCommandHandler(ILogger<HelloWorldCommandHandler> logger)
+        AQIDataService _service
+        public HelloWorldCommandHandler(ILogger<HelloWorldCommandHandler> logger, AQIDataService service)
         {
             _logger = logger;
+            _service = service;
         }
 
         public async Task<ICommandResponse> HandleCommandAsync(ITurnContext turnContext, CommandMessage message, CancellationToken cancellationToken = default)
         {
-            _logger?.LogInformation($"Bot received message: {message.Text}");
-
-            var location = message.Text.Replace("aqi", "").Trim();
-
-            var httpClient = new HttpClient();
-            var url = $"https://airqualityfunctions20220929140700.azurewebsites.net/api/GetAirQuality?location={location}";
-            var aqi = await httpClient.GetStringAsync(url);
+            _logger?.LogInformation($"App received message: {message.Text}");
 
             // Read adaptive card template
             var cardTemplate = await File.ReadAllTextAsync(_adaptiveCardFilePath, cancellationToken);
@@ -45,7 +41,8 @@ namespace AirQualityCommandBot.Commands
             (
                 new HelloWorldModel
                 {
-                    Title = aqi,
+                    Title = "Your Hello World App is Running",
+                    Body = "Congratulations! Your Hello World App is running. Open the documentation below to learn more about how to build applications with the Teams Toolkit.",
                 }
             );
 
