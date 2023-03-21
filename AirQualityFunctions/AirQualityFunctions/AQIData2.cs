@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace AirQualityFunctions;
 
-/*
-public class AQIData
+
+public class Rootobject
 {
     public string status { get; set; }
     public Data data { get; set; }
@@ -52,7 +52,4 @@ public class Weather
     public float ws { get; set; }
     public int wd { get; set; }
     public string ic { get; set; }
-}*/
-
-
-
+}

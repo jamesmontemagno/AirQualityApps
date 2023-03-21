@@ -43,7 +43,7 @@ namespace AirQualityFunctions
                 var aqiUrl = $"https://api.airvisual.com/v2/nearest_city?lat={lat}&lon={lon}&key={aqiKey}";
 
                 var aqi = await http.GetStringAsync(aqiUrl);
-                var aqiData = JsonConvert.DeserializeObject<AQIData>(aqi);
+                var aqiData = JsonConvert.DeserializeObject<Rootobject>(aqi);
 
                 return new OkObjectResult(aqiData.data.current.pollution.aqius.ToString());
             }
